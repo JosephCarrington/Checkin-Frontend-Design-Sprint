@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1350 1060" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Isolation-Mode" serif:id="Isolation Mode" transform="matrix(4.16667,0,0,4.16667,0,0)">
+        <g transform="matrix(1,0,0,1,278.601,227.54)">
+            <path d="M0,-47.652C-22.595,-34.329 -66.724,-25.283 -117.489,-25.283C-168.24,-25.283 -212.369,-34.329 -234.964,-47.652L-271.518,0L36.554,0L0,-47.652Z" style="fill:rgb(50, 50, 50);fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,87.1436,95.4436)">
+            <path d="M0,26.541C0.94,66.869 33.799,99.238 73.968,99.238C114.15,99.238 147.023,66.843 147.95,26.515C148.016,26.541 147.884,26.501 147.95,26.515L73.981,-72.697L0,26.541C0.066,26.528 -0.066,26.554 0,26.541" style="fill:rgb(50, 50, 50);fill-rule:nonzero;"/>
+        </g>
+    </g>
+</svg>

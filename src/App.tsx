@@ -1,4 +1,7 @@
 import React, { useState, useRef } from "react";
+
+import Header from "./Header.js";
+import CharterLogo from "./images/CharterLogo.svg";
 import "./App.css";
 
 enum CurrentState {
@@ -9,7 +12,7 @@ enum CurrentState {
   RECEIVED_RESPONSE_BAD
 }
 
-const BOOP_SERVER_URL = "http://10.4.48.188:4000";
+const BOOP_SERVER_URL = "http://10.4.48.193:4000";
 const RESET_TIMEOUT = 5000;
 
 const App: React.FC = () => {
@@ -56,9 +59,7 @@ const App: React.FC = () => {
           setCurrentAppState(CurrentState.RECEIVED_RESPONSE_GOOD);
           setTimeout(() => reset(), RESET_TIMEOUT);
       }
-    } catch (e) {
-      debugger;
-    }
+    } catch (e) {}
   };
 
   const reset = () => {
@@ -69,8 +70,16 @@ const App: React.FC = () => {
     }
   };
 
+  let appClasses = "App";
+  if (currentAppState === CurrentState.RECEIVED_RESPONSE_GOOD) {
+    appClasses += " good-bg";
+  }
+  if (currentAppState === CurrentState.RECEIVED_RESPONSE_BAD) {
+    appClasses += " bad-bg";
+  }
   return (
-    <div className="App">
+    <div className={appClasses}>
+      <Header />
       <form onSubmit={handleSubmit} style={{ position: "absolute" }}>
         <input
           autoFocus
@@ -81,20 +90,43 @@ const App: React.FC = () => {
         />
       </form>
       <div className="appState">
-        {currentAppState === CurrentState.WAITING_FOR_RFID && (
-          <div className="waiting">Waiting for input</div>
-        )}
-        {currentAppState === CurrentState.ENTERING_RFID && (
-          <div className="entering">Entering RFID</div>
-        )}
-        {currentAppState === CurrentState.SENDING_RFID && (
-          <div className="sending">Sending RFID</div>
+        {(currentAppState === CurrentState.WAITING_FOR_RFID ||
+          currentAppState === CurrentState.ENTERING_RFID ||
+          currentAppState === CurrentState.SENDING_RFID) && (
+          <div className="waiting">
+            <div className="blurb">
+              Scan your wristband
+              <br />
+              for entry into the
+              <br />
+              Multiverse
+            </div>
+            <div className="status">
+              <div className="logo">
+                <img src={CharterLogo} className="charter-logo" alt="" />
+              </div>
+              {currentAppState === CurrentState.WAITING_FOR_RFID && "Ready"}
+              {(currentAppState === CurrentState.ENTERING_RFID ||
+                currentAppState === CurrentState.SENDING_RFID) &&
+                "Analyzing"}
+            </div>
+          </div>
         )}
         {currentAppState === CurrentState.RECEIVED_RESPONSE_BAD && (
-          <div className="bad">Couldn't find that wristband, sorry</div>
+          <div className="bad">
+            UNAUTHORIZED ACCESS
+            <br />
+            DETECTED
+            <div className="bad-blurb">
+              Please see Guest Services for assistance.
+            </div>
+          </div>
         )}
         {currentAppState === CurrentState.RECEIVED_RESPONSE_GOOD && (
-          <div className="good">{currentMessage}</div>
+          <div
+            className="good"
+            dangerouslySetInnerHTML={{ __html: currentMessage }}
+          />
         )}
       </div>
     </div>

@@ -1,3 +1,20 @@
+@font-face {
+  font-family: "Avenir Next";
+  src: url("file:/fonts/Avenir-Next-Medium.ttf") format("truetype"); /* in App (?) */
+  src: url("/fonts/Avenir-Next-Medium.ttf") format("truetype"); /* in Preview */
+}
+
+@font-face {
+  font-family: "AvenirNext-DemiBold";
+  src: url("file:/code/fonts/Avenir-Next-Medium.ttf") format("truetype"); /* in App (?) */
+  src: url("/fonts/Avenir-Next-Medium.ttf") format("truetype"); /* in Preview */
+}
+
+@font-face {
+  font-family: "AvenirNext-Bold";
+  src: url("file:/fonts/Avenir-Next-Bold.ttf") format("truetype"); /* in App (?) */
+  src: url("/fonts/Avenir-Next-Bold.ttf") format("truetype"); /* in Preview */
+}
 .App {
   text-align: center;
   width: 100%;
@@ -6,12 +23,34 @@
   left: 0;
   right: 0;
   bottom: 0;
+  background-image: linear-gradient(#412784, #ec0089);
+}
+
+.good-bg {
+  background: linear-gradient(
+    45deg,
+    rgba(5, 188, 231, 1) 0%,
+    rgba(102, 190, 97, 1) 100%
+  );
+}
+
+.bad-bg {
+  background: black;
+  background-image: url("images/CharterLogoBad.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 900px;
 }
 
 .appState {
   width: 100%;
   height: 100%;
-  font-size: 10rem;
+  font-size: 6rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-family: "Avenir Next";
 }
 
 .waiting,
@@ -19,30 +58,38 @@
 .sending,
 .bad,
 .good {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
 }
 
-.waiting {
-  background: green;
-}
-
-.entering {
-  background: fuchsia;
-}
-
-.sending {
-  background: yellow;
+.status {
+  margin-top: 4rem;
+  display: flex;
 }
 
 .bad {
-  background: red;
+  color: #fff21f;
 }
 
-.good {
-  background: pink;
+.bad-blurb {
+  color: white;
+  font-size: 2rem;
+  margin-top: 6rem;
+  transform: translate(0, 200px);
 }
 
 form {
   z-index: -1;
+}
+
+.logo {
+  width: 45%;
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.charter-logo {
+  height: 7rem;
+  margin-bottom: -20px;
 }
