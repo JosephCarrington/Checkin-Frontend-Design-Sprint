@@ -10,7 +10,7 @@ enum CurrentState {
 }
 
 const BOOP_SERVER_URL = "http://10.4.48.188:4000";
-const RESET_TIMEOUT = 1000;
+const RESET_TIMEOUT = 5000;
 
 const App: React.FC = () => {
   const [currentRFID, setCurrentRFID] = useState("");
@@ -47,6 +47,7 @@ const App: React.FC = () => {
       switch (result.status) {
         case 404:
           setCurrentAppState(CurrentState.RECEIVED_RESPONSE_BAD);
+          setTimeout(() => reset(), RESET_TIMEOUT);
           break;
         default:
           const response = await result.json();
